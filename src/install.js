@@ -17,6 +17,9 @@ function install() {
 
   const hookScript = `#!/bin/sh
 # git-adr post-commit hook
+# Source shell profile so ANTHROPIC_API_KEY is available in non-interactive shells
+[ -f "$HOME/.zprofile" ] && . "$HOME/.zprofile"
+[ -f "$HOME/.bash_profile" ] && . "$HOME/.bash_profile"
 # Skip ADR auto-commits to avoid an infinite loop
 COMMIT_MSG=$(git log -1 --pretty=%s)
 case "$COMMIT_MSG" in
