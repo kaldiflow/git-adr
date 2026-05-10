@@ -10,7 +10,7 @@ const program = new Command();
 program
   .name('git-adr')
   .description('AI-generated Architecture Decision Records from git diffs')
-  .version('1.0.0');
+  .version('1.1.0');
 
 program
   .command('install')
