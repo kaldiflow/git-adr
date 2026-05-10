@@ -4,7 +4,7 @@
   "description": "AI-generated Architecture Decision Records from git diffs",
   "main": "bin/git-adr.js",
   "bin": {
-    "git-adr": "./bin/git-adr.js"
+    "git-adr": "bin/git-adr.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,7 +13,15 @@
     "type": "git",
     "url": "git+https://github.com/kaldiflow/git-adr.git"
   },
-  "keywords": ["git", "adr", "architecture", "decision", "records", "ai", "claude"],
+  "keywords": [
+    "git",
+    "adr",
+    "architecture",
+    "decision",
+    "records",
+    "ai",
+    "claude"
+  ],
   "author": "Sean Cotton",
   "license": "MIT",
   "type": "commonjs",
