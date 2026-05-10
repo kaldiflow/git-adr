@@ -1,0 +1,28 @@
+{
+  "name": "git-adr",
+  "version": "1.0.0",
+  "description": "AI-generated Architecture Decision Records from git diffs",
+  "main": "bin/git-adr.js",
+  "bin": {
+    "git-adr": "./bin/git-adr.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaldiflow/git-adr.git"
+  },
+  "keywords": ["git", "adr", "architecture", "decision", "records", "ai", "claude"],
+  "author": "Sean Cotton",
+  "license": "MIT",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/kaldiflow/git-adr/issues"
+  },
+  "homepage": "https://github.com/kaldiflow/git-adr#readme",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.95.1",
+    "commander": "^14.0.3"
+  }
+}
