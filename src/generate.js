@@ -10,6 +10,18 @@ const SYSTEM_PROMPT = `You are an expert software architect. Analyze git commits
 Focus on the WHY behind changes — the reasoning, patterns used, trade-offs, and consequences — not just a summary of what changed. Be direct and concrete. Aim for 200-400 words total.`;
 
 const MAX_DIFF_CHARS = 12000;
+const MIN_CHANGED_LINES = 10;
+
+function countChangedLines(diff) {
+  let count = 0;
+  for (const line of diff.split('\n')) {
+    if ((line.startsWith('+') && !line.startsWith('+++')) ||
+        (line.startsWith('-') && !line.startsWith('---'))) {
+      count++;
+    }
+  }
+  return count;
+}
 
 function getGitRoot() {
   return execSync('git rev-parse --show-toplevel', { encoding: 'utf8' }).trim();
@@ -43,6 +55,12 @@ async function run() {
 
   if (!diff.trim()) {
     console.log('git-adr: empty diff, skipping.');
+    process.exit(0);
+  }
+
+  const changedLines = countChangedLines(diff);
+  if (changedLines < MIN_CHANGED_LINES) {
+    console.log(`git-adr: only ${changedLines} changed lines (< ${MIN_CHANGED_LINES}), skipping ADR.`);
     process.exit(0);
   }
 
